@@ -4,13 +4,23 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
+    "serve-server": "node server/app.js",
     "build": "vue-cli-service build",
     "lint": "eslint .",
     "prettier-check": "prettier --check \"src/**/*.js\"",
-    "prettier-fix": "prettier --write \"src/**/*.js\""
+    "prettier-fix": "prettier --write \"src/**/*.js\"",
+    "merge-data": "node mergeData.js"
   },
   "dependencies": {
+    "@ag-grid-community/vue3": "^24.1.1",
+    "@ag-grid-enterprise/all-modules": "^24.1.0",
+    "ag-grid-community": "^24.1.0",
+    "ag-grid-vue3": "^24.1.1",
+    "axios": "^0.21.0",
     "core-js": "^3.6.5",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "lodash": "^4.17.20",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0"
   },
@@ -23,7 +33,9 @@
     "eslint": "^7.15.0",
     "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-prettier": "^3.3.0",
-    "eslint-plugin-vue": "^7.2.0"
+    "eslint-plugin-vue": "^7.2.0",
+    "node-sass": "^5.0.0",
+    "sass-loader": "^10.1.0"
   },
   "eslintConfig": {
     "root": true,
