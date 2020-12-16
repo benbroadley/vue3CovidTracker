@@ -1,8 +1,9 @@
 <template>
   <div id="nav">
     <router-link to="/">Home</router-link> |
+    <router-link to="/writeup">Writeup</router-link> |
     <router-link to="/tracker">Tracker</router-link> |
-    <router-link to="/writeup">Writeup</router-link>
+    <router-link to="/todo">Todo</router-link>
   </div>
   <router-view v-slot="{ Component }">
     <transition name="fade" mode="out-in">
@@ -16,12 +17,18 @@
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
+}
+
+.container {
+  width: 60%;
+  margin: 0 auto;
+  text-align: left;
 }
 
 #nav {
   padding: 30px;
+  text-align: center;
 }
 
 #nav a {
