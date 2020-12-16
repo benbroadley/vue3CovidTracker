@@ -2,7 +2,6 @@
   <div id="nav">
     <router-link to="/">Home</router-link> |
     <router-link to="/writeup">Writeup</router-link> |
-    <router-link to="/tracker">Tracker</router-link> |
     <router-link to="/todo">Todo</router-link>
   </div>
   <router-view v-slot="{ Component }">
