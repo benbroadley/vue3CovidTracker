@@ -1,13 +1,116 @@
 <template>
   <div class="writeup container">
-    <h1>Vue.js</h1>
+    <div class="heading">
+      <div>
+        <h1>Vue.js 3 - A look into what's new 🆕</h1>
+      </div>
+      <div class="logo"><img src="@/assets/logo.png" height="100" /></div>
+    </div>
+
+    <div class="content-sidebyside">
+      <div class="text-left">
+        <h3>This is a heading</h3>
+        <p>Explanation on the left.</p>
+      </div>
+      <div class="centered">
+        <div v-highlight>
+          <pre class="language-html">
+        <code>
+          {{`
+      <template>
+        <Main />
+      </template>
+
+      <script>
+        // @ is an alias to /src
+        import Main from "@/components/Main.vue";
+
+        export default {
+          name: "Home",
+          components: {
+            Main,
+          },
+        };
+      </script>
+      `}}
+        </code>
+      </pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-middle">
+      <div></div>
+      <div>
+        <h3>This is another heading</h3>
+        <p>Here is an explanation of the heading.</p>
+        <div>
+          <div v-highlight>
+            <pre class="language-html">
+        <code>
+          {{`
+      <template>
+        <Main />
+      </template>
+
+      <script>
+        // @ is an alias to /src
+        import Main from "@/components/Main.vue";
+
+        export default {
+          name: "Home",
+          components: {
+            Main,
+          },
+        };
+      </script>
+      `}}
+        </code>
+      </pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-sidebyside">
+      <div class="centered">
+        <div v-highlight>
+          <pre class="language-html">
+        <code>
+          {{`
+      <template>
+        <Main />
+      </template>
+
+      <script>
+        // @ is an alias to /src
+        import Main from "@/components/Main.vue";
+
+        export default {
+          name: "Home",
+          components: {
+            Main,
+          },
+        };
+      </script>
+      `}}
+        </code>
+      </pre>
+        </div>
+      </div>
+      <div class="text-right">
+        <h3>Composition API</h3>
+        <p>Explanation on the right.</p>
+      </div>
+    </div>
+
     <h2 id="intro">
       <router-link :to="{ path: '/writeup', hash: '#intro' }">#</router-link
       >Intro
     </h2>
 
     <div v-highlight>
-      <pre class="language-javascript">
+      <pre class="language-html">
         <code>
           {{`
       <template>
@@ -268,11 +371,69 @@
   </div>
 </template>
 
+<script>
+export default {};
+</script>
+
 <style lang="scss" scoped>
 .writeup {
-  h1 {
+  p {
+    font-size: 18px;
+  }
+
+  .centered {
+    text-align: center;
+  }
+
+  .heading {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 100px;
     padding: 4rem 2rem;
     background-color: #f3f3f3;
+    border-radius: 5px;
+    line-height: 100px;
+  }
+
+  .content-sidebyside {
+    margin: 2rem 0;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto;
+
+    .text-left {
+      text-align: right;
+      padding-right: 2rem;
+    }
+
+    .text-right {
+      padding-left: 4rem;
+    }
+  }
+
+  .content-middle {
+    margin: 2rem 0;
+    display: grid;
+    grid-template-columns: 33% 34% 33%;
+    grid-template-rows: auto;
+
+    text-align: left;
+    p {
+      padding-right: 1rem;
+    }
+  }
+
+  .logo {
+    text-align: right;
+  }
+
+  .code {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  h1 {
+    margin: 0;
   }
 
   a {

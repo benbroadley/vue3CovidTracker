@@ -12,16 +12,21 @@
 </template>
 
 <style>
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+  color: #333333;
 }
 
 .container {
-  width: 60%;
-  margin: 0 auto;
+  margin: 0 2rem;
   text-align: left;
 }
 
