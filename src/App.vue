@@ -16,13 +16,20 @@ body,
 html {
   margin: 0;
   padding: 0;
+  font-family: "century gothic", Helvetica, Arial, sans-serif, sans-serif;
 }
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #333333;
+  color: #888888;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: #666666;
 }
 
 .container {
