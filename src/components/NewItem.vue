@@ -1,4 +1,5 @@
 <template>
+  <p>My new item component:</p>
   <form @submit.prevent="addNewItem">
     <input type="text" v-model="itemToAdd" />
     <button>Add item</button>

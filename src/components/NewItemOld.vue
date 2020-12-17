@@ -1,6 +1,12 @@
 <template>
-  <input type="text" v-model="itemToAdd" />
-  <button v-on:click="addNewItem()">Add item</button>
+  <!-- Vue 2 example -->
+  <div>
+    <p>My new item component:</p>
+    <form @submit.prevent="addNewItem">
+      <input type="text" v-model="itemToAdd" />
+      <button>Add item</button>
+    </form>
+  </div>
 </template>
 
 <script>
