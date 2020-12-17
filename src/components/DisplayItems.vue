@@ -1,10 +1,10 @@
 <template>
   <transition-group name="list">
     <p
-      v-for="item in items"
+      v-for="(item, idx) in items"
       :key="item"
       class="list-item"
-      @click="markAsDone(item)"
+      @click="markAsDone(idx)"
     >
       {{ item.isComplete ? "✔" : "◼" }}
       <span :class="{ 'is-complete': item.isComplete }">{{ item.text }}</span>
@@ -13,21 +13,20 @@
 </template>
 
 <script>
+import { useStore } from "vuex";
+import { computed } from "vue";
+
 export default {
   name: "DisplayItems",
-  props: {
-    items: {
-      required: true,
-      default: [],
-    },
-  },
-  setup(props) {
-    function markAsDone(item) {
-      item.isComplete = !item.isComplete;
+  setup() {
+    const store = useStore();
+
+    function markAsDone(idx) {
+      store.dispatch("markDone", idx);
     }
 
     return {
-      items: props.items,
+      items: computed(() => store.getters.todoList),
       markAsDone,
     };
   },

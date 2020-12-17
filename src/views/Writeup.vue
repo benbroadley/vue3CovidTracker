@@ -467,6 +467,9 @@
               No migration available just yet for complex Vue 2 applications
             </li>
             <li>Seems like quite a few breaking changes to contend with</li>
+            <li>
+              As it's new, support in the community appears a little limited
+            </li>
           </ul>
         </div>
       </div>

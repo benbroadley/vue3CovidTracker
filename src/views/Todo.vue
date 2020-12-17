@@ -2,8 +2,8 @@
   <div class="todo">
     <h1>Todo</h1>
     <p>Number of things left to do: {{ count }}</p>
-    <NewItem :addItem="addItem" />
-    <DisplayItems :items="itemsToDisplay" />
+    <NewItem />
+    <DisplayItems />
   </div>
 </template>
 

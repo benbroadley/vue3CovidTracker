@@ -1,5 +1,4 @@
 <template>
-  <p>My new item component:</p>
   <form @submit.prevent="addNewItem">
     <input type="text" v-model="itemToAdd" />
     <button>Add item</button>
@@ -8,18 +7,15 @@
 
 <script>
 import { ref } from "vue";
+import { useStore } from "vuex";
 
 export default {
-  props: {
-    addItem: {
-      required: true,
-    },
-  },
   setup(props) {
+    const store = useStore();
     const itemToAdd = ref("");
 
     function addNewItem() {
-      props.addItem(itemToAdd.value);
+      store.dispatch("addTodo", itemToAdd.value);
       itemToAdd.value = "";
     }
 
