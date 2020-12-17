@@ -1,6 +1,11 @@
 <template>
   <div class="todo">
     <h1>Todo</h1>
+    <transition name="fade">
+      <div v-if="errorText" class="error">
+        <p>{{ errorText }}</p>
+      </div>
+    </transition>
     <p>Number of things left to do: {{ count }}</p>
     <NewItem />
     <DisplayItems />
@@ -13,6 +18,7 @@ import NewItem from "@/components/NewItem.vue";
 
 import { ref, computed } from "vue";
 import { filter } from "lodash";
+import { useStore } from "vuex";
 
 export default {
   components: {
@@ -20,23 +26,14 @@ export default {
     NewItem,
   },
   setup() {
-    const itemsToDisplay = ref([]);
+    const store = useStore();
     const count = computed(
-      () => filter(itemsToDisplay.value, (item) => !item.isComplete).length
+      () => filter(store.getters.todoList, (item) => !item.isComplete).length
     );
 
-    function addItem(item) {
-      if (!item) return;
-      itemsToDisplay.value.unshift({
-        text: item,
-        isComplete: false,
-      });
-    }
-
     return {
+      errorText: computed(() => store.getters.error),
       count,
-      addItem,
-      itemsToDisplay,
     };
   },
 };
@@ -45,5 +42,19 @@ export default {
 <style lang="scss" scoped>
 .todo {
   text-align: center;
+}
+
+.error {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+
+  p {
+    border-radius: 5px;
+    margin-right: 10px;
+    padding: 1rem 1.5rem;
+    background-color: #d00000;
+    color: #ffffff;
+  }
 }
 </style>

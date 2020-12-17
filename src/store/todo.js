@@ -4,18 +4,20 @@ import { createStore } from "vuex";
 export default createStore({
   state() {
     return {
-      todos: [{ text: "hi", isComplete: false }],
+      todos: [],
+      error: null,
     };
   },
   getters: {
     todoList(state) {
       return state.todos;
     },
+    error(state) {
+      return state.error;
+    },
   },
   mutations: {
     addTodo: (state, item) => {
-      console.log("called", item);
-
       state.todos.unshift({
         text: item,
         isComplete: false,
@@ -24,15 +26,22 @@ export default createStore({
     markDone: (state, idx) => {
       state.todos[idx].isComplete = !state.todos[idx].isComplete;
     },
+    error: (state, errText) => {
+      state.error = `ERROR: ${errText}`;
+      setTimeout(() => {
+        state.error = "";
+      }, 1500);
+    },
   },
   actions: {
     addTodo: ({ commit }, item) => {
-      console.log("called", item);
-      if (!item) return;
+      if (!item) {
+        commit("error", "Cannot add an empty item.");
+        return;
+      }
       commit("addTodo", item);
     },
     markDone: ({ commit }, idx) => {
-      console.log("markingDone", idx);
       commit("markDone", idx);
     },
   },
