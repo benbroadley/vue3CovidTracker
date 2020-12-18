@@ -17,6 +17,7 @@ html {
   margin: 0;
   padding: 0;
   font-family: "century gothic", Helvetica, Arial, sans-serif, sans-serif;
+  margin-right: 17px;
 }
 
 #app {
@@ -25,11 +26,15 @@ html {
   color: #888888;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 h1,
 h2,
 h3,
 h4 {
-  color: #666666;
+  color: #383838;
 }
 
 .container {

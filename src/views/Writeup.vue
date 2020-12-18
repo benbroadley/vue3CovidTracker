@@ -1,10 +1,8 @@
 <template>
   <div class="writeup container">
     <div class="heading">
-      <div>
-        <h1>Vue.js 3 - A view into what's new 🆕</h1>
-      </div>
-      <div class="logo"><img src="@/assets/logo.png" height="100" /></div>
+      Vue.js 3 - A view into what's new 🆕
+      <div class="shadow"></div>
     </div>
 
     <div class="content">
@@ -522,13 +520,14 @@ export default {
   }
 
   .heading {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    grid-template-rows: 100px;
     padding: 4rem 2rem;
-    background-color: #f3f3f3;
-    border-radius: 5px;
     line-height: 100px;
+    margin-top: 30vh;
+    margin-bottom: 30vh;
+    text-align: center;
+    font-size: 72px;
+    line-height: 60px;
+    color: #383838;
   }
 
   .content {
