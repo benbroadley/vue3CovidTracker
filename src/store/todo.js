@@ -1,19 +1,20 @@
 import { createStore } from "vuex";
+import { toUpper } from "lodash";
 
 // Create a new store instance.
 export default createStore({
   state() {
     return {
       todos: [],
-      error: null,
+      msg: {},
     };
   },
   getters: {
     todoList(state) {
       return state.todos;
     },
-    error(state) {
-      return state.error;
+    msg(state) {
+      return state.msg;
     },
   },
   mutations: {
@@ -26,23 +27,34 @@ export default createStore({
     markDone: (state, idx) => {
       state.todos[idx].isComplete = !state.todos[idx].isComplete;
     },
-    error: (state, errText) => {
-      state.error = `ERROR: ${errText}`;
+    removeTodo: (state, idx) => {
+      state.todos.splice(idx, 1);
+    },
+    msg: (state, { type, text }) => {
+      state.msg = { text: `${toUpper(type)}: ${text}`, type };
       setTimeout(() => {
-        state.error = "";
+        state.msg = {};
       }, 1500);
     },
   },
   actions: {
     addTodo: ({ commit }, item) => {
       if (!item) {
-        commit("error", "Cannot add an empty item.");
+        commit("msg", { type: "error", text: "Cannot add an empty item." });
         return;
       }
       commit("addTodo", item);
     },
     markDone: ({ commit }, idx) => {
+      commit("msg", {
+        type: "success",
+        text: "Yes! Go you for completing a task.",
+      });
       commit("markDone", idx);
+    },
+    removeTodo: ({ commit }, idx) => {
+      commit("msg", { type: "info", text: "Todo has been removed." });
+      commit("removeTodo", idx);
     },
   },
 });

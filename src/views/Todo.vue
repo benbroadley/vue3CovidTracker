@@ -2,8 +2,8 @@
   <div class="todo">
     <h1>Todo</h1>
     <transition name="fade">
-      <div v-if="errorText" class="error">
-        <p>{{ errorText }}</p>
+      <div v-if="msg.text" :class="`notification msg-text ${msg.type}`">
+        <p>{{ msg.text }}</p>
       </div>
     </transition>
     <p>Number of things left to do: {{ count }}</p>
@@ -32,7 +32,7 @@ export default {
     );
 
     return {
-      errorText: computed(() => store.getters.error),
+      msg: computed(() => store.getters.msg),
       count,
     };
   },
@@ -45,16 +45,27 @@ export default {
 }
 
 .error {
+  background-color: #e0474b;
+}
+
+.info {
+  background-color: #2357ad;
+}
+
+.success {
+  background-color: #359b47;
+}
+
+.notification {
   position: fixed;
   bottom: 0;
   right: 0;
-
-  p {
-    border-radius: 5px;
-    margin-right: 10px;
-    padding: 1rem 1.5rem;
-    background-color: #d00000;
-    color: #ffffff;
-  }
+  color: #ffffff;
+}
+.msg-text {
+  border-radius: 5px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding: 1rem 1.5rem;
 }
 </style>

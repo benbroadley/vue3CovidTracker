@@ -1,7 +1,7 @@
 <template>
   <div class="writeup container">
     <div class="heading">
-      Vue.js 3 - A view into what's new 🆕
+      Vue.js 3 - A <span class="underline">view</span> into what's nue
       <div class="shadow"></div>
     </div>
 
@@ -528,6 +528,11 @@ export default {
     font-size: 72px;
     line-height: 60px;
     color: #383838;
+  }
+
+  .underline {
+    text-decoration: underline;
+    font-style: italic;
   }
 
   .content {

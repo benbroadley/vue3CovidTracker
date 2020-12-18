@@ -1,13 +1,13 @@
 <template>
   <transition-group name="list">
-    <p
-      v-for="(item, idx) in items"
-      :key="item"
-      class="list-item"
-      @click="markAsDone(idx)"
-    >
+    <p v-for="(item, idx) in items" :key="item" class="list-item">
       {{ item.isComplete ? "✔" : "◼" }}
-      <span :class="{ 'is-complete': item.isComplete }">{{ item.text }}</span>
+      <span
+        @click="markAsDone(idx)"
+        :class="{ 'is-complete': item.isComplete }"
+        >{{ item.text }}</span
+      >
+      <span @click="removeTodo(idx)" class="remove-todo">❌</span>
     </p>
   </transition-group>
 </template>
@@ -24,10 +24,14 @@ export default {
     function markAsDone(idx) {
       store.dispatch("markDone", idx);
     }
+    function removeTodo(idx) {
+      store.dispatch("removeTodo", idx);
+    }
 
     return {
       items: computed(() => store.getters.todoList),
       markAsDone,
+      removeTodo,
     };
   },
 };
@@ -41,6 +45,9 @@ export default {
   cursor: pointer;
   display: block;
   margin-right: 10px;
+}
+.remove-todo {
+  margin-left: 5px;
 }
 </style>
 
